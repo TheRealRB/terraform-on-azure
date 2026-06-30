@@ -1,0 +1,51 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pr:
+- main
+
+variables:
+- group: shared-backend-variables
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: ValidateAndPlan
+    displayName: 'Validate Terraform Code'
+    variables:
+    - group:  terraform-dev-variables
+    jobs:
+      - job: TerraformValidate
+        displayName: 'Terraform Validation'
+        steps:
+        - task: TerraformInstaller@1
+          inputs:
+            terraformVersion: 'latest'
+        - task: TerraformTask@5
+          displayName: 'terraform-init'
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'Terraform-project-svcConnection'
+            backendAzureRmResourceGroupName: '$(TF_Backend_Resource_Group)'
+            backendAzureRmStorageAccountName: '$(TF_Backend_Storage_Account)'
+            backendAzureRmContainerName: '$(TF_Backend_Container)'
+            backendAzureRmKey: '$(TF_Backend_Key)'
+        - task: TerraformTask@5
+          displayName: 'Terraform validate'
+          inputs:
+            provider: 'azurerm'
+            command: 'validate'
+        - task: TerraformTask@5
+          displayName: 'Terraform plan'
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)"'
+            environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
