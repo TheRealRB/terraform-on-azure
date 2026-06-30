@@ -32,6 +32,7 @@ module "compute" {
   tags                    = var.tags
 }
 
+
 module "database" {
   source                  = "./modules/database"
 
