@@ -49,3 +49,49 @@ stages:
             command: 'plan'
             commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)"'
             environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
+
+  - stage: DeployDevStage
+    displayName: 'Deploy to Dev Env'
+    dependsOn: ValidateAndPlan
+    condition: and(succeeded(), eq(variables['Build.SourchBranch'], 'refs/heads/main'))
+    variables:
+      - group: terraform-dev-variables
+    jobs:
+      - deployment: DeployDev
+        displayName: 'DevDeployJob'
+        environment:  'dev'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+
+                - task: TerraformInstaller@1
+                  inputs:
+                    terraformVersion: 'latest'
+                - task: TerraformTask@5
+                  displayName: 'terraform-init'
+                  inputs:
+                    provider: 'azurerm'
+                    command: 'init'
+                    backendServiceArm: 'Terraform-project-svcConnection'
+                    backendAzureRmResourceGroupName: '$(TF_Backend_Resource_Group)'
+                    backendAzureRmStorageAccountName: '$(TF_Backend_Storage_Account)'
+                    backendAzureRmContainerName: '$(TF_Backend_Container)'
+                    backendAzureRmKey: '$(TF_Backend_Key)'
+
+                - task: TerraformTask@5
+                  displayName: 'Terraform plan'
+                  inputs:
+                    provider: 'azurerm'
+                    command: 'plan'
+                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)"'
+                    environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
+
+                - task: TerraformTask@5
+                  inputs:
+                    provider: 'azurerm'
+                    command: 'apply'
+                    commandOptions: 'tfplan'
+                    environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
+            
