@@ -50,7 +50,7 @@ module "web_app" {
   project_name            = "projkpi"
   environment             = var.environment
   location                = var.location
-  app_service_sku = var.app_service_sku
+#  app_service_sku = var.app_service_sku
 #  database_connection_string = module.database.connection_string
   tags                    = var.tags
 }
