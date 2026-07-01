@@ -3,7 +3,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.0"
+      version = "~> 4.0"
     }
   }
 
@@ -16,7 +16,9 @@ terraform {
 }
 
 provider "azurerm" {
+  subscription_id = var.subscription_id
   features {}
+  use_oidc = true
 }
 
 module "compute" {
@@ -31,7 +33,6 @@ module "compute" {
   subnet_address_prefixes = var.subnet_address_prefixes
   tags                    = var.tags
 }
-
 
 module "database" {
   source                  = "./modules/database"
