@@ -12,9 +12,9 @@ output "virtual_network_id" {
   
 }
 
-output "vm_ids" {
+# output "vm_ids" {
     
-  description = "The IDs of the virtual machines."
-  value       = azurerm_linux_virtual_machine.main[*].id
+#   description = "The IDs of the virtual machines."
+#   value       = azurerm_linux_virtual_machine.main[*].id
   
-}
+# }
