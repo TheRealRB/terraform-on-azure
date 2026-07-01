@@ -20,7 +20,7 @@ locals {
 }
 
 resource "azurerm_resource_group" "database" {
-  name     = "rg-${local.resource_suffix}"
+  name     = "${local.resource_suffix}"
   location = var.location
   tags     = local.common_tags
 }
