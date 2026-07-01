@@ -47,7 +47,7 @@ variable "vm_size" {
 variable "address_space" {
     description = "The address space for the virtual network."
     type        = list(string)
-    default = ["10.0.0.0/24"]
+    default = ["10.0.0.0/16"]
 }
 
 variable "subnet_address_prefixes" {
