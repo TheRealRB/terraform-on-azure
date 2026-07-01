@@ -1,5 +1,5 @@
 locals {
-  resource_suffix       = "rg-${var.environment}-${var.project_name}-webapp"
+  resource_suffix       = "${var.environment}-${var.project_name}-webapp"
 
   common_tags           = merge(
     var.tags,
