@@ -3,10 +3,10 @@ output "resource_group_name" {
    description = "The name of the resource group for the web application."
 }
 
-output "service_plan_name" {
-   value = azurerm_service_plan.main.name
-   description = "The name of the app service plan for the web application."
-}
+# output "service_plan_name" {
+#    value = azurerm_service_plan.main.name
+#    description = "The name of the app service plan for the web application."
+# }
 
 # output "web_app_name" {
 #    value = azurerm_linux_web_app.main.name

@@ -20,14 +20,14 @@ resource "azurerm_resource_group" "webapp" {
 
 # App Service Plan
 
-resource "azurerm_service_plan" "main" {
-  name                = "plan-${local.resource_suffix}"
-  location            = azurerm_resource_group.webapp.location
-  resource_group_name = azurerm_resource_group.webapp.name
-  os_type = "Linux"
-  sku_name            = var.app_service_sku
-  tags                = local.common_tags
-}
+# resource "azurerm_service_plan" "main" {
+#   name                = "plan-${local.resource_suffix}"
+#   location            = azurerm_resource_group.webapp.location
+#   resource_group_name = azurerm_resource_group.webapp.name
+#   os_type = "Linux"
+#   sku_name            = var.app_service_sku
+#   tags                = local.common_tags
+# }
 
 # Web App
 # resource "azurerm_linux_web_app" "main" {
