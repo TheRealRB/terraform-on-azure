@@ -52,31 +52,31 @@ resource "azurerm_network_interface" "main" {
   
 }
 
- resource "azurerm_linux_virtual_machine" "main" {
- count = var.vm_count
- name                = "vm-${local.resource_suffix}-${count.index + 1}"
- resource_group_name = azurerm_resource_group.main.name
- location            = azurerm_resource_group.main.location
- size                = var.vm_size
- disable_password_authentication = false
- admin_username      = "adminuser"
- admin_password = "P@ssword33323!"
- network_interface_ids = [
-   azurerm_network_interface.main[count.index].id,
-   ]
+#  resource "azurerm_linux_virtual_machine" "main" {
+#  count = var.vm_count
+#  name                = "vm-${local.resource_suffix}-${count.index + 1}"
+#  resource_group_name = azurerm_resource_group.main.name
+#  location            = azurerm_resource_group.main.location
+#  size                = var.vm_size
+#  disable_password_authentication = false
+#  admin_username      = "adminuser"
+#  admin_password = "P@ssword33323!"
+#  network_interface_ids = [
+#    azurerm_network_interface.main[count.index].id,
+#    ]
 
 
-  os_disk {
-    caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
-  }
+#   os_disk {
+#     caching              = "ReadWrite"
+#     storage_account_type = "Standard_LRS"
+#   }
 
-  source_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
-    version   = "latest"
-  }
+#   source_image_reference {
+#     publisher = "Canonical"
+#     offer     = "0001-com-ubuntu-server-jammy"
+#     sku       = "22_04-lts"
+#     version   = "latest"
+#   }
 
-  tags = local.common_tags
-}
+#   tags = local.common_tags
+# }

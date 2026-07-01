@@ -30,24 +30,24 @@ resource "azurerm_service_plan" "main" {
 }
 
 # Web App
-resource "azurerm_linux_web_app" "main" {
-  name                = "app-${var.environment}-${var.project_name}-${random_string.suffix.result}"
-  location            = azurerm_resource_group.webapp.location
-  resource_group_name = azurerm_resource_group.webapp.name
-  service_plan_id     = azurerm_service_plan.main.id
+# resource "azurerm_linux_web_app" "main" {
+#   name                = "app-${var.environment}-${var.project_name}-${random_string.suffix.result}"
+#   location            = azurerm_resource_group.webapp.location
+#   resource_group_name = azurerm_resource_group.webapp.name
+#   service_plan_id     = azurerm_service_plan.main.id
 
-  site_config {
-    application_stack {
-      node_version = "18-lts"
-    }
-  }
+#   site_config {
+#     application_stack {
+#       node_version = "18-lts"
+#     }
+#   }
 
-  app_settings = var.database_connection_string != "" ? {
-    "DATABASE_CONNECTION_STRING" = var.database_connection_string
-  } : {}
+#   app_settings = var.database_connection_string != "" ? {
+#     "DATABASE_CONNECTION_STRING" = var.database_connection_string
+#   } : {}
 
-  tags = local.common_tags
-}
+#   tags = local.common_tags
+# }
 
 # Random string for unique naming
 resource "random_string" "suffix" {
