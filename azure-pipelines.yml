@@ -47,7 +47,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)"'
+            commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -detailed-exitcode'
            # commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan'
             environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
 
