@@ -6,7 +6,7 @@ resource "random_string" "suffix" {
 }
 
 locals {
-  resource_suffix       = "rg-${var.environment}-${var.project_name}-database"
+  resource_suffix       = "${var.environment}-${var.project_name}-database"
 
   common_tags           = merge(
     var.tags,
@@ -20,7 +20,7 @@ locals {
 }
 
 resource "azurerm_resource_group" "database" {
-  name     = "${local.resource_suffix}"
+  name     = "rg-${local.resource_suffix}"
   location = var.location
   tags     = local.common_tags
 }
