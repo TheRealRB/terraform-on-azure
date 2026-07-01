@@ -32,11 +32,13 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'init'
+            commandOptions: '-upgrade'
             backendServiceArm: 'Terraform-project-svcConnection'
             backendAzureRmResourceGroupName: '$(TF_Backend_Resource_Group)'
             backendAzureRmStorageAccountName: '$(TF_Backend_Storage_Account)'
             backendAzureRmContainerName: '$(TF_Backend_Container)'
             backendAzureRmKey: '$(TF_Backend_Key)'
+
         - task: TerraformTask@5
           displayName: 'Terraform validate'
           inputs:
