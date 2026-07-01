@@ -51,7 +51,7 @@ module "web_app" {
   environment             = var.environment
   location                = var.location
   app_service_sku = var.app_service_sku
-  database_connection_string = module.database.connection_string
+#  database_connection_string = module.database.connection_string
   tags                    = var.tags
 }
 
