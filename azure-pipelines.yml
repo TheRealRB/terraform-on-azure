@@ -49,7 +49,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -detailed-exitcode'
+            commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_password=$(TF_Admin_Password)" -detailed-exitcode'
            # commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan'
             environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
 
@@ -88,7 +88,7 @@ stages:
                   inputs:
                     provider: 'azurerm'
                     command: 'plan'
-                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)"'
+                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_password=$(TF_Admin_Password)" -detailed-exitcode'
                     environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
 
                 - task: TerraformTask@5
@@ -134,7 +134,7 @@ stages:
                   inputs:
                     provider: 'azurerm'
                     command: 'plan'
-                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)"'
+                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_password=$(TF_Admin_Password)" -detailed-exitcode'
                     environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
 
                 - task: TerraformTask@5
@@ -180,7 +180,7 @@ stages:
                   inputs:
                     provider: 'azurerm'
                     command: 'plan'
-                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)"'
+                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_password=$(TF_Admin_Password)" -detailed-exitcode'
                     environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
 
                 - task: TerraformTask@5
