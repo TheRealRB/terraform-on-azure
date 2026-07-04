@@ -37,7 +37,7 @@ module "database" {
 
   project_name            = var.project_name
   environment             = var.environment
-  location                = var.location
+  location                = var.database_location
   deploy_database         = var.deploy_database
   admin_password          = var.database_password
   admin_username          = var.admin_username

@@ -10,4 +10,7 @@ vm_size   = "Standard_D2s_v3"
 TF_Backend_Key = dev.tfstate
 
 deploy_database = true
-database_sku_name = "Basic"
+database_sku = "Basic"
+
+location          = "eastus2"
+database_location = "centralus"
