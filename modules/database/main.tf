@@ -26,6 +26,7 @@ resource "azurerm_resource_group" "database" {
 }
 
 resource "azurerm_mssql_server" "main" {
+    count = var.deploy_database ? 1 : 0
   name                         = "sql-${var.environment}-${var.project_name}-${random_string.suffix.result}"
   resource_group_name          = azurerm_resource_group.database.name
   location                     = azurerm_resource_group.database.location
@@ -39,7 +40,7 @@ resource "azurerm_mssql_database" "main" {
     count = var.deploy_database ? 1 : 0
 
     name                = "db-${var.environment}-${var.project_name}"
-    server_id = azurerm_mssql_server.main.id
+    server_id = azurerm_mssql_server.main[0].id
     sku_name            = var.database_sku
     tags                = local.common_tags
 }
@@ -49,7 +50,7 @@ resource "azurerm_mssql_firewall_rule" "azure_services" {
     count = var.deploy_database ? 1 : 0
 
   name                = "AllowAzureServices"
-  server_id           = azurerm_mssql_server.main.id
+  server_id           = azurerm_mssql_server.main[0].id
   start_ip_address    = "0.0.0.0"
   end_ip_address      = "0.0.0.0"
 }

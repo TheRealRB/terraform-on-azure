@@ -30,7 +30,7 @@ variable "deploy_database" {
 variable "admin_username" {
     description = "The admin username for the database."
     type        = string
-    default     = "sqladmin"
+    default     = "sqladminuser"
 }
 
 variable "admin_password" {
