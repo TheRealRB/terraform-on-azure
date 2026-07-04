@@ -42,7 +42,7 @@ resource "azurerm_resource_group" "webapp" {
 #     }
 #   }
 
-#   app_settings = var.database_connection_string != "" ? {
+#   app_settings = var.database_connection_string != null ? {
 #     "DATABASE_CONNECTION_STRING" = var.database_connection_string
 #   } : {}
 

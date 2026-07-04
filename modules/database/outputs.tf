@@ -12,7 +12,8 @@ output "server_name" {
 }
 
 output "connection_string" {
-   value = "Server=${azurerm_mssql_server.main[0].fully_qualified_domain_name};Database=${azurerm_mssql_database.main[0].name};User ID=${var.admin_username};Password=${var.admin_password};"
+   value = try("Server=${azurerm_mssql_server.main[0].fully_qualified_domain_name};Database=${azurerm_mssql_database.main[0].name};User ID=${var.admin_username};Password=${var.admin_password};", null
+   )
    description = "The connection string for the SQL database."
    sensitive = true
 }

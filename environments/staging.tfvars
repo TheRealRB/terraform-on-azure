@@ -7,3 +7,6 @@ TF_Backend_Key = staging.tfstate
 
 deploy_database = false
 database_sku = "Basic"
+
+location          = "eastus2"
+database_location = "centralus"
