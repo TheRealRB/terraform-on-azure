@@ -125,6 +125,7 @@ Current modules include:
 * Subnets
 * Network Interfaces
 * Optional Linux Virtual Machines
+* Compute resources are optional and controlled via a deployment flag to avoid unintended cost consumption.
 
 ### Database
 
@@ -252,6 +253,7 @@ Building this project involved resolving a variety of real-world Infrastructure 
 * **Azure Networking** – Corrected virtual network and subnet CIDR configurations after identifying address range mismatches that prevented successful subnet creation.
 * **Git Repository Management** – Cleaned repository history after accidentally committing a large binary executable by rewriting Git history and implementing `.gitignore` best practices for Terraform projects.
 * **Azure DevOps CI/CD Pipeline** – Built a multi-stage deployment pipeline supporting validation, planning, and automated deployments to Development, Staging, and Production environments using environment-specific configuration and remote state.
+* **Terraform State Management Issues** - During initial pipeline execution, all environments were incorrectly configured to use a shared state file. This caused Terraform to treat all environments as a single infrastructure stack resulting in incorrect drift detection issues, destructive resource placement, and unintended cross-environment changes. This was corrected by configuring a separate state file for each environment.
 
 These troubleshooting exercises reinforced practical skills in Infrastructure as Code, Azure administration, CI/CD automation, cloud security, Git workflows, and operational problem solving.
 

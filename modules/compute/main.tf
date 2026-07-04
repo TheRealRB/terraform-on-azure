@@ -33,7 +33,7 @@ resource "azurerm_subnet" "main" {
   name                 = "subnet-${local.resource_suffix}"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = var.subnet_address_prefixes
+  address_prefixes     = [var.subnet_address_prefixes[0]]
 }
 
 
@@ -62,11 +62,14 @@ resource "azurerm_linux_virtual_machine" "main" {
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   size                = var.vm_size
-
-  disable_password_authentication = false
   admin_username                  = var.admin_username
-  admin_password                  = var.admin_password
+  disable_password_authentication = true
 
+  admin_ssh_key {
+  username   = var.admin_username
+  public_key = var.ssh_public_key
+}
+ 
   network_interface_ids = [
     azurerm_network_interface.main[count.index].id
   ]

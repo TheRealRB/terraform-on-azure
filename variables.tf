@@ -7,7 +7,7 @@ variable "team_name" {
 variable "project_name" {
   description = "The name of the project."
   type        = string
-  default     = "terraform-demo-wildcard"
+  default     = "terraform-demo"
 }
 
 variable "subscription_id" {
@@ -15,7 +15,7 @@ variable "subscription_id" {
 }
 
 variable "location" {
-  description = "the azure region where resources will be created"
+  description = "The Azure region where resources will be created"
   type        = string
   default     = "eastus2"
 }
@@ -26,11 +26,11 @@ variable "environment" {
   default     = "dev"
 }
 
-variable "resource_group_name" {
-  description = "The name of the resource group"
-  type        = string
-  default     = "rg-terraform-demo"
-}
+# variable "resource_group_name" {
+#   description = "The name of the resource group"
+#   type        = string
+#   default     = "rg-terraform-demo"
+# }
 
 variable "tags" {
   description = "Tags to apply to resources"
@@ -39,11 +39,11 @@ variable "tags" {
   }
 }
 
-variable "virtual_network_name" {
-  description = "The name of the virtual network"
-  type        = string
-  default     = "vnet-terraform-demo"
-}
+# variable "virtual_network_name" {
+#   description = "The name of the virtual network"
+#   type        = string
+#   default     = "vnet-terraform-demo"
+# }
 
 variable "address_space" {
   description = "The address space for the virtual network"
@@ -54,7 +54,7 @@ variable "address_space" {
 variable "subnet_address_prefixes" {
   description = "The address prefix for the subnet"
   type        = list(string)
-  default     = ["10.0.0.0/28", "10.0.16.0/28"]
+  default     = ["10.0.1.0/24"]
 }
 
 variable "deploy_vm" {
@@ -69,7 +69,6 @@ variable "vm_count" {
   default     = 0
 }
 
-
 variable "vm_size" {
   description = "The size of the virtual machines"
   type        = string
@@ -77,8 +76,6 @@ variable "vm_size" {
 }
 
 # Database configuration
-
-
 variable "database_password" {
     description = "The admin password for the database."
     type        = string
@@ -91,7 +88,6 @@ variable "database_sku" {
     default     = "Basic"
 }
 
-
 #Web App configuration
 variable "app_service_sku" {
     description = "The SKU/tier for the App Service Plan."
@@ -102,10 +98,11 @@ variable "app_service_sku" {
 variable "admin_username" {
   description = "Admin username for Linux VMs."
   type        = string
+  default = "adminuser"
 }
 
-variable "admin_password" {
-  description = "Admin password for Linux VMs."
+variable "ssh_public_key" {
+  description = "Public SSH key for Linux VM access"
   type        = string
-  sensitive   = true
 }
+
