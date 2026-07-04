@@ -49,7 +49,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_username=$(TF_Admin_Username)" - var="ssh_public_key=$(TF_SSH_PUBLIC_KEY)" -detailed-exitcode'
+            commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_username=$(TF_Admin_Username)" -var="ssh_public_key=$(TF_SSH_PUBLIC_KEY)" -detailed-exitcode'
             environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
 
   - stage: DeployDevStage
@@ -87,7 +87,7 @@ stages:
                   inputs:
                     provider: 'azurerm'
                     command: 'plan'
-                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_username=$(TF_Admin_Username)" - var="ssh_public_key=$(TF_SSH_PUBLIC_KEY)" -detailed-exitcode'
+                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_username=$(TF_Admin_Username)" -var="ssh_public_key=$(TF_SSH_PUBLIC_KEY)" -detailed-exitcode'
                     environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
 
                 - task: TerraformTask@5
@@ -133,7 +133,7 @@ stages:
                   inputs:
                     provider: 'azurerm'
                     command: 'plan'
-                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_username=$(TF_Admin_Username)" - var="ssh_public_key=$(TF_SSH_PUBLIC_KEY)" -detailed-exitcode'
+                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_username=$(TF_Admin_Username)" -var="ssh_public_key=$(TF_SSH_PUBLIC_KEY)" -detailed-exitcode'
                     environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
 
                 - task: TerraformTask@5
@@ -179,7 +179,7 @@ stages:
                   inputs:
                     provider: 'azurerm'
                     command: 'plan'
-                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_username=$(TF_Admin_Username)" - var="ssh_public_key=$(TF_SSH_PUBLIC_KEY)" -detailed-exitcode'
+                    commandOptions: '-var-file=environments/$(TF_Var_environment).tfvars -out=tfplan -var="database_password=$(TF_Var_database_password)" -var="admin_username=$(TF_Admin_Username)" -var="ssh_public_key=$(TF_SSH_PUBLIC_KEY)" -detailed-exitcode'
                     environmentServiceNameAzureRM: 'Terraform-project-svcConnection'
 
                 - task: TerraformTask@5
