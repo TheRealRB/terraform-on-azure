@@ -28,7 +28,7 @@ module "compute" {
   address_space           = var.address_space
   subnet_address_prefixes = var.subnet_address_prefixes
   admin_username          = var.admin_username
-  admin_password          = var.admin_password
+  ssh_public_key          = var.ssh_public_key
   tags                    = var.tags
 }
 

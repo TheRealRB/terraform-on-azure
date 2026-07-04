@@ -68,16 +68,14 @@ variable "admin_username" {
   type        = string
 }
 
-variable "admin_password" {
-  description = "Admin password for Linux VMs."
-  type        = string
-  sensitive   = true
-}
-
 variable "tags" {
     description = "A map of tags to assign to the resources."
     type        = map(string)
     default     = {
     }
-  
+}
+
+variable "ssh_public_key" {
+  description = "Public SSH key for Linux VM access"
+  type        = string
 }
