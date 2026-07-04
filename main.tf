@@ -7,12 +7,14 @@ terraform {
     }
   }
 
-  backend "azurerm" {
-    resource_group_name  = "terraform-state-rg"
-    storage_account_name = "tfryanstact"
-    container_name       = "tfstate"
-    key                  = "terraform.tfstate"
-  }
+backend "azurerm" {}
+
+  # backend "azurerm" {
+  #   resource_group_name  = "terraform-state-rg"
+  #   storage_account_name = "tfryanstact"
+  #   container_name       = "tfstate"
+  #   key                  = "terraform.tfstate"
+  # }
 }
 
 provider "azurerm" {
@@ -27,17 +29,20 @@ module "compute" {
   team_name               = var.team_name
   environment             = var.environment
   location                = var.location
+  deploy_vm                = var.deploy_vm
   vm_count                = var.vm_count
   vm_size                 = var.vm_size
   address_space           = var.address_space
   subnet_address_prefixes = var.subnet_address_prefixes
+  admin_username          = var.admin_username
+  admin_password          = var.admin_password
   tags                    = var.tags
 }
 
 module "database" {
   source                  = "./modules/database"
 
-  project_name            = "projkpi"
+  project_name            = var.project_name
   environment             = var.environment
   location                = var.location
   admin_password = var.database_password

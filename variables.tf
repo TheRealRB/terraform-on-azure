@@ -54,14 +54,21 @@ variable "address_space" {
 variable "subnet_address_prefixes" {
   description = "The address prefix for the subnet"
   type        = list(string)
-  default     = ["10.0.0.0/28", "10.0.1.0/28"]
+  default     = ["10.0.0.0/28", "10.0.16.0/28"]
+}
+
+variable "deploy_vm" {
+  description = "Controls whether Linux virtual machines are deployed."
+  type        = bool
+  default     = false
 }
 
 variable "vm_count" {
-  description = "The number of virtual machines to create"
+  description = "Number of Linux virtual machines to deploy."
   type        = number
-  default     = 1
+  default     = 0
 }
+
 
 variable "vm_size" {
   description = "The size of the virtual machines"
@@ -93,3 +100,13 @@ variable "app_service_sku" {
     default     = "B1"
 }
 
+variable "admin_username" {
+  description = "Admin username for Linux VMs."
+  type        = string
+}
+
+variable "admin_password" {
+  description = "Admin password for Linux VMs."
+  type        = string
+  sensitive   = true
+}

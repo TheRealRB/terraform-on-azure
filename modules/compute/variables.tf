@@ -8,7 +8,6 @@ variable "team_name" {
     description = "The name of the team."
     type        = string
     default = "devops-team2"
-  
 }
 
 variable "environment" {
@@ -22,20 +21,27 @@ variable "environment" {
     }
 }
 
-
 variable "location" {
     description = "The location/region for the resources."
     type        = string
     default = "eastus2"
 }
 
+variable "deploy_vm" {
+  description = "Controls whether Linux virtual machines are deployed."
+  type        = bool
+  default     = false
+}
+
 variable "vm_count" {
-      description = "The number of VMs to create."
-      type        = number
-      validation {
-        condition = var.vm_count > 0 && var.vm_count <=5
-        error_message = "The VM count must be a positive integer between 1 and 5."
-      }
+  description = "The number of VMs to create."
+  type        = number
+  default     = 0
+
+  validation {
+    condition     = var.vm_count >= 0 && var.vm_count <= 5
+    error_message = "The VM count must be between 0 and 5."
+  }
 }
 
 variable "vm_size" {
@@ -55,6 +61,17 @@ variable "subnet_address_prefixes" {
     type        = list(string)
     default     = ["10.0.1.0/24", "10.0.2.0/24"]
   
+}
+
+variable "admin_username" {
+  description = "Admin username for Linux VMs."
+  type        = string
+}
+
+variable "admin_password" {
+  description = "Admin password for Linux VMs."
+  type        = string
+  sensitive   = true
 }
 
 variable "tags" {
