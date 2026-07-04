@@ -7,5 +7,7 @@ deploy_vm = true
 vm_count  = 1
 vm_size   = "Standard_D2s_v3"
 
-
 TF_Backend_Key = dev.tfstate
+
+deploy_database = false
+database_sku_name = "Basic"

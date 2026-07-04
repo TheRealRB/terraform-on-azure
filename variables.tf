@@ -75,6 +75,12 @@ variable "vm_size" {
   default     = "Standard_B1s"
 }
 
+variable "deploy_database" {
+  description = "Controls whether Azure SQL resources are deployed."
+  type        = bool
+  default     = false
+}
+
 # Database configuration
 variable "database_password" {
     description = "The admin password for the database."
@@ -105,4 +111,5 @@ variable "ssh_public_key" {
   description = "Public SSH key for Linux VM access"
   type        = string
 }
+
 

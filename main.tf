@@ -38,9 +38,17 @@ module "database" {
   project_name            = var.project_name
   environment             = var.environment
   location                = var.location
-  admin_password = var.database_password
-  database_sku = var.database_sku
+  deploy_database         = var.deploy_database
+  admin_password          = var.database_password
+  admin_username          = var.admin_username
+  database_sku            = var.database_sku
   tags                    = var.tags
+}
+
+variable "database_admin_username" {
+  description = "SQL database admin username."
+  type        = string
+  default     = "sqladminuser"
 }
 
 module "web_app" {

@@ -21,6 +21,12 @@ variable "location" {
     default = "eastus2"
 }
 
+variable "deploy_database" {
+  description = "Controls whether Azure SQL resources are deployed."
+  type        = bool
+  default     = false
+}
+
 variable "admin_username" {
     description = "The admin username for the database."
     type        = string
