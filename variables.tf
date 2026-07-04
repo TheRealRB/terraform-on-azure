@@ -7,7 +7,7 @@ variable "team_name" {
 variable "project_name" {
   description = "The name of the project."
   type        = string
-  default     = "terraform-demo2"
+  default     = "terraform-demo-wildcard"
 }
 
 variable "subscription_id" {
@@ -74,7 +74,6 @@ variable "vm_size" {
   description = "The size of the virtual machines"
   type        = string
   default     = "Standard_B1s"
-
 }
 
 # Database configuration

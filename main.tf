@@ -52,7 +52,7 @@ module "database" {
 
 module "web_app" {
   source                  = "./modules/web-app"
-  project_name            = "projkpi"
+  project_name            = var.project_name
   environment             = var.environment
   location                = var.location
 #  app_service_sku = var.app_service_sku
