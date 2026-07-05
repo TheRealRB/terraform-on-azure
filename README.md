@@ -228,14 +228,28 @@ This provides:
 
 ## Cost Management
 
-To minimize Azure costs during development, Linux virtual machines are optional.
+The solution is designed to support cost-conscious development and testing by allowing expensive Azure resources to be deployed only when required.
+
+### Optional Compute Deployment
+
+Linux virtual machines are controlled through deployment flags, allowing infrastructure validation without provisioning compute resources.
 
 ```terraform
 deploy_vm = false
 vm_count  = 0
 ```
 
-Infrastructure can be validated and deployed without provisioning compute resources until required.
+### Optional Database Deployment
+
+Azure SQL Database resources can also be enabled or disabled through a deployment flag.
+
+```terraform
+deploy_database = false
+```
+
+When disabled, the Azure SQL Server, SQL Database, and associated firewall rules are not provisioned, reducing Azure consumption costs during development and testing.
+
+This approach enables the CI/CD pipeline, Terraform modules, and infrastructure configuration to be fully validated while deploying only the resources required for a given environment.
 
 ---
 
@@ -268,6 +282,8 @@ This project provided practical experience with:
 * Multi-environment deployments
 * Troubleshooting complex Infrastructure as Code deployments
 * Infrastructure automation
+
+---
 
 ## Troubleshooting
 
