@@ -20,7 +20,19 @@ The project follows Infrastructure as Code best practices including:
 * Azure Service Connections
 * Enterprise tagging strategy
 * Secure variable management
-* Optional infrastructure deployment for cost control
+* Cost-conscious infrastructure design through optional deployment flags and environment-specific resource provisioning.
+
+---
+
+## Project Highlights
+
+- Built reusable Terraform modules for compute, database, and web application resources
+- Automated multi-environment deployments using Azure DevOps YAML pipelines
+- Implemented remote Terraform state with Azure Storage and state locking
+- Used Azure DevOps Service Connections with OpenID Connect (OIDC) authentication
+- Secured sensitive configuration through Azure DevOps Variable Groups
+- Implemented optional resource deployment to reduce Azure consumption costs
+- Deployed Linux virtual machines using SSH key authentication
 
 ---
 
@@ -38,6 +50,20 @@ This project demonstrates how to:
 
 ---
 
+## Key Features
+
+- Modular Terraform architecture
+- Multi-environment deployment
+- Remote state isolation
+- Azure DevOps CI/CD
+- OIDC authentication
+- Secure secret management
+- SSH-based Linux VM deployment
+- Optional infrastructure provisioning
+- Enterprise tagging strategy
+
+---
+
 ## Technologies
 
 | Technology             | Purpose                |
@@ -47,7 +73,11 @@ This project demonstrates how to:
 | Azure Resource Manager | Resource Provisioning  |
 | Azure DevOps           | CI/CD Pipeline         |
 | Azure Storage Account  | Remote Terraform State |
-| Git                    | Source Control         |
+| Azure SQL Database     | Database Platform      |
+| Azure App Service      | Web Hosting            |
+| GitHub                 | Source Control         |
+| Git                    | Version Control        |
+
 
 ---
 
@@ -120,12 +150,13 @@ Current modules include:
 
 ### Compute
 
-* Resource Group
-* Virtual Network
-* Subnets
-* Network Interfaces
-* Optional Linux Virtual Machines
-* Compute resources are optional and controlled via a deployment flag to avoid unintended cost consumption.
+- Resource Group
+- Virtual Network
+- Subnets
+- Network Interfaces
+- Optional Linux Virtual Machines
+- SSH key authentication
+- Optional deployment for cost management
 
 ### Database
 
@@ -212,11 +243,12 @@ Infrastructure can be validated and deployed without provisioning compute resour
 
 Sensitive information is not stored in source control.
 
-Secrets are managed through:
+Secrets and authentication are managed through:
 
-* Azure DevOps Variable Groups
-* Secure Pipeline Variables
-* Azure Service Connections
+- Azure DevOps Variable Groups
+- Azure Resource Manager Service Connections
+- OpenID Connect (OIDC) authentication
+- Secure pipeline variables
 
 Terraform state is stored securely using Azure Storage with state locking enabled.
 
@@ -234,7 +266,7 @@ This project provided practical experience with:
 * Azure RBAC permissions
 * Provider version management
 * Multi-environment deployments
-* Terraform troubleshooting
+* Troubleshooting complex Infrastructure as Code deployments
 * Infrastructure automation
 
 ## Troubleshooting
