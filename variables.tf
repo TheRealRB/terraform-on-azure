@@ -10,9 +10,6 @@ variable "project_name" {
   default     = "terraform-demo"
 }
 
-variable "subscription_id" {
-  type = string
-}
 
 variable "location" {
   description = "The Azure region where resources will be created"

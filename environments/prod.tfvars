@@ -12,5 +12,5 @@ TF_Backend_Key = prod.tfstate
 deploy_database = true
 database_sku = "Basic"
 
-location          = "eastus2"
+location          = "westus"
 database_location = "centralus"
