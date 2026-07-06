@@ -1,4 +1,3 @@
-project_name            = "terraform-demo3"
 environment             = "prod"
 
 address_space           = ["10.5.0.0/24"]
@@ -10,7 +9,7 @@ vm_size   = "Standard_D2s_v3"
 
 TF_Backend_Key = prod.tfstate
 
-deploy_database = false
+deploy_database = true
 database_sku = "Basic"
 
 location          = "eastus2"
