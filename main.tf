@@ -1,20 +1,3 @@
-# Configure Azure Provider
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 4.0"
-    }
-  }
-
-backend "azurerm" {}
-}
-
-provider "azurerm" {
-  # subscription_id = var.subscription_id
-  features {}
-  use_oidc = true
-}
 
 module "compute" {
   source                  = "./modules/compute"
