@@ -61,6 +61,7 @@ This project demonstrates how to:
 - SSH-based Linux VM deployment
 - Optional infrastructure provisioning
 - Enterprise tagging strategy
+- Deploy or Destroy optional virtual machines, database servers, and databases
 
 ---
 
@@ -138,6 +139,7 @@ Current modules include:
 * Azure SQL Database resources
 * Configurable SKU
 * Secure password management
+- Optional deployment for cost management
 
 ### Web Application
 
@@ -199,6 +201,8 @@ deploy_database = false
 When disabled, the Azure SQL Server, SQL Database, and associated firewall rules are not provisioned, reducing Azure consumption costs during development and testing.
 
 This approach enables the CI/CD pipeline, Terraform modules, and infrastructure configuration to be fully validated while deploying only the resources required for a given environment.
+
+Note that you can destroy previously deployed resources by toggling the flags back to false/0 and re-running the deployment. Terraform will compare the current deployed resources and then destroy.
 
 ---
 
@@ -270,3 +274,8 @@ Planned improvements include:
 * Policy as Code
 * Private Endpoints
 
+## Acknowledgements
+
+This project was initially inspired by concepts introduced in the LinkedIn Learning course **Introduction to Terraform on Azure** by Prince Mokut.
+
+While portions of the initial Terraform structure were based on the course material, the project was significantly expanded to include improvements in modular infrastructure, Azure DevOps CI/CD pipelines, remote Terraform state management, multi-environment deployments, optional infrastructure deployment, security enhancements, architecture documentation, and additional troubleshooting based on hands-on implementation.
