@@ -82,41 +82,9 @@ This project demonstrates how to:
 ---
 
 ## Architecture
+
 ![alt text](diagrams/terraform-devops-1.png)
 
-```text
-Developer
-      │
-      ▼
-GitHub
-      │
-      ▼
-Azure DevOps Repository
-      │
-      ▼
-Azure DevOps YAML Pipeline
-      │
-      ▼
-Terraform Init
-Terraform Validate
-Terraform Plan
-Terraform Apply
-      │
-      ▼
-Azure Storage
-(Remote State)
-      │
-      ▼
-Azure Subscription
-      │
-      ├── Resource Group
-      ├── Virtual Network
-      ├── Subnet
-      ├── Network Interface
-      ├── Linux Virtual Machine (Optional)
-      ├── Database
-      └── Web Application
-```
 
 ---
 
@@ -125,6 +93,12 @@ Azure Subscription
 ```text
 terraform-on-azure/
 
+├── diagrams/
+│   ├── terraform-devops-1.png
+│   ├── terraform-devops-2.png
+│   ├── terraform-devops-3.png
+│   └── terraform-devops-4.png
+│
 ├── environments/
 │   ├── dev.tfvars
 │   ├── staging.tfvars
@@ -176,27 +150,7 @@ Current modules include:
 
 The Azure DevOps pipeline performs the following workflow:
 
-```
-Validate
-    │
-    ▼
-Terraform Init
-    │
-    ▼
-Terraform Validate
-    │
-    ▼
-Terraform Plan
-    │
-    ▼
-Deploy Development
-    │
-    ▼
-Deploy Staging
-    │
-    ▼
-Deploy Production
-```
+![alt text](diagrams/terraform-devops-3.png)
 
 Each deployment environment uses:
 
@@ -210,13 +164,7 @@ Each deployment environment uses:
 
 Terraform state is stored remotely in Azure Storage.
 
-```
-Storage Account
-└── tfstate
-    ├── dev.tfstate
-    ├── staging.tfstate
-    └── prod.tfstate
-```
+![alt text](diagrams/terraform-devops-2.png)
 
 This provides:
 
