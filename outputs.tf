@@ -9,3 +9,6 @@ output "virtual_network_id" {
   value       = module.compute.virtual_network_id
 }
 
+output "debug_deploy_database" {
+  value = var.deploy_database
+}
