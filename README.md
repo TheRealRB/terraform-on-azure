@@ -82,6 +82,7 @@ This project demonstrates how to:
 ---
 
 ## Architecture
+![alt text](diagrams/terraform-devops-1.png)
 
 ```text
 Developer
