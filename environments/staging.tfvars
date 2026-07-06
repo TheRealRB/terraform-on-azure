@@ -9,7 +9,7 @@ vm_size   = "Standard_D2s_v3"
 
 TF_Backend_Key = staging.tfstate
 
-deploy_database = true
+deploy_database = false
 database_sku = "Basic"
 
 location          = "eastus2"
