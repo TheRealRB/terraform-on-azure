@@ -3,8 +3,8 @@ environment             = "prod"
 address_space           = ["10.5.0.0/24"]
 subnet_address_prefixes = ["10.5.0.0/28"]
 
-deploy_vm = false
-vm_count  = 0
+deploy_vm = true
+vm_count  = 1
 vm_size   = "Standard_D2s_v3"
 
 TF_Backend_Key = prod.tfstate
