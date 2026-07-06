@@ -1,7 +1,7 @@
 variable "project_name" {
     description = "The name of the project."
     type        = string
-    default = "Terraform Demo Project"
+    default = "Terraform Azure DevOps Demo"
 }
 
 variable "environment" {
